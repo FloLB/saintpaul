@@ -69,7 +69,3 @@ Votre enfant va partir durant l'année scolaire en classe de découverte.
 </body>
 
 </html>
-
-
-
-?>
