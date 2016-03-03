@@ -6,3 +6,5 @@
 
 **Version 1.1**
 *- Projet MVC*
+
+**Version 1.2**
