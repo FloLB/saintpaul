@@ -51,10 +51,16 @@ Votre enfant va partir durant l'année scolaire en classe de découverte.
                 <?php
 			foreach ($sejours as $sejour): ?>
                 <sejour>
-                    <h2><p><?php echo $sejour['SEJINTITULE'] ?></p></h2>
-                    <?php echo $sejour['SEJMONTANTMBI'].'€' ?><BR/>
-                    <?php echo 'A partir du '.$sejour['SEJDTEDEB'] ?>
-                    <?php echo $sejour['SEJDUREE'].' nuits' ?>
+                    <h2><p>
+
+                        <h2><?php echo $sejour->getSejIntitule() ?></h2>
+
+                        <p><?php echo $sejour->getSejMontantMBI().'€' ?> </p>
+
+                        <p><?php echo 'a partir de '.$sejour->getSejDteDeb();
+
+                                 echo $sejour->getSejDuree().' nuit(s)'?></p>
+
                 </sejour>
             <?php endforeach ?>
 </fieldset>
