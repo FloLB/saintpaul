@@ -1,0 +1,23 @@
+.box-presentation {
+
+    margin-top: 100px;
+    margin-right: 10px;
+}
+
+.box-prix {
+
+    margin-top: 100px;
+    margin-left: 10px;
+}
+
+.navbar-inverse {
+    background-color: #843534;  }
+
+.navbar-inverse .navbar-nav > li > a {
+
+    color: #eeeeee;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #6495ed;
+}

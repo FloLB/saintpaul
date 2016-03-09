@@ -2,32 +2,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="utf-8" />
-    <link href="../web/css/styly.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/lib/css/style.css" rel="stylesheet">
     <title>SAINT PAUL DU TERRAY</title>
 </head>
 
-<body class="body">
+<div class="container">
 
-<main class="main">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">Saint Paul du Terray</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Manifestation</a></li>
+                    <li><a href="#">Facturation</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 
-    <header-null class="header-null">
-        <header class="header">
-            <h1>SAINT PAUL DU TERRAY</a></h1>
-            <menu-null class="menu-null">
-                <div class="menu">
-                    <a href="#" class="menu_link">Index</a>
-                    <a href="#" class="menu_link">Manifestation</a>
-                    <a href="#" class="menu_link">Facturation</a>
-                    <a href="#" class="menu_link">Contact</a>
-                </div>
-            </menu-null>
-        </header>
-    </header-null>
-
-    <noscreen/>
-
-    <left class="left">
+    <div class="well col-lg-5 box-presentation">
         <h2>Madame, Monsieur,</h2>
         <p>
             Votre enfant va partir durant l'année scolaire en classe de découverte.
@@ -41,40 +47,34 @@
             <li>Réduction de 20% pour famille de 2 enfants</li>
             <li>Réduction de 40% pour famille de 3 enfants ou plus</li>
         </ul>
-    </left>
+    </div>
 
-    <noscreen/>
 
-    <right class="right">
+    <div class="well col-lg-5 box-prix">
         <h2>Liste des séjours prévus </h2>
         <fieldset>
 
             {% for sejour in sejours %}
 
-                <sejour>
+                <p>
 
-                    <h2>{{ sejour.sejIntitule }}</h2>
+                    <strong>{{ sejour.sejIntitule }}</strong><br />
 
                     {{ sejour.sejMontantMBI }} €<br />
 
-                    A partir du {{ sejour.sejDteDeb }}
+                    A partir du {{ sejour.sejDteDeb }}<br />
 
-                    {{ sejour.sejDuree }} nuits
+                    {{ sejour.sejDuree }} nuits<br />
 
-                </sejour>
+                </p>
 
 
             {% endfor %}
 
         </fieldset>
-    </right>
-</main>
+    </div>
 
-<footer class="footer">
-    Copyright &copy; 2016 Saint paul du terray
-</footer>
-
+</div>
 
 </body>
-
 </html>
