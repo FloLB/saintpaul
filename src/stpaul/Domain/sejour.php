@@ -44,7 +44,7 @@ class Sejour {
         $this->SejNo = $SejNo;
         $this->SejIntitule = $SejIntitule;
         $this->SejMontantMBI = $SejMontantMBI;
-        $this->SejDteDeb = New \DateTime($SejDteDeb);
+        $this->SejDteDeb = $SejDteDeb;
         $this->SejDuree = $SejDuree;
     }
 
@@ -136,7 +136,7 @@ class Sejour {
      */
     public function getSejDteFin()
     {
-        $date = $this->SejDteDeb;
+        $date =New \DateTime($this->SejDteDeb);
         $date->add(New \DateInterval('P'.$this->SejDuree.'D'));
         return date_format($date, 'Y-m-d');
     }
