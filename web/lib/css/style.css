@@ -11,13 +11,13 @@
 }
 
 .navbar-inverse {
-    background-color: #843534;  }
+    background-color: forestgreen;  }
 
 .navbar-inverse .navbar-nav > li > a {
 
-    color: #eeeeee;
+    color: #ffffff;
 }
 
 .navbar-inverse .navbar-brand {
-    color: #6495ed;
+    color: #000000;
 }

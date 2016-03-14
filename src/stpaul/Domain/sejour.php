@@ -8,6 +8,7 @@ namespace stpaul\Domain;
  * Class Sejour
  * @package stpaul\Domain
  */
+
 class Sejour {
 
     /**
@@ -43,7 +44,7 @@ class Sejour {
         $this->SejNo = $SejNo;
         $this->SejIntitule = $SejIntitule;
         $this->SejMontantMBI = $SejMontantMBI;
-        $this->SejDteDeb = $SejDteDeb;
+        $this->SejDteDeb = New \DateTime($SejDteDeb);
         $this->SejDuree = $SejDuree;
     }
 
@@ -129,4 +130,26 @@ class Sejour {
     }
 
 
+    /**
+     * Retourne la date de fin de sejour
+     * @return mixed
+     */
+    public function getSejDteFin()
+    {
+        $date = $this->SejDteDeb;
+        $date->add(New \DateInterval('P'.$this->SejDuree.'D'));
+        return date_format($date, 'Y-m-d');
+    }
+
+    /**
+     * Formatage jj-mm-aaaa
+     * @param $pDte : date a formater
+     * @return mixed
+     */
+    public function getSejDteFormatFR($pDte)
+    {
+
+    $date = New \DateTime($pDte);
+    return date_format($date, 'd-m-Y');
+    }
 }
