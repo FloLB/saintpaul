@@ -32,14 +32,13 @@ class Sejour {
      */
     private $SejDuree;
 
-    /**
-     * @param $SejNo
-     * @param $SejIntitule
-     * @param $SejMontantMBI
-     * @param $SejDteDeb
-     * @param $SejDuree
-     */
-    function __construct($SejNo, $SejIntitule, $SejMontantMBI, $SejDteDeb,$SejDuree)
+
+    function __construct()
+    {
+
+    }
+
+    function init($SejNo, $SejIntitule, $SejMontantMBI, $SejDteDeb,$SejDuree)
     {
         $this->SejNo = $SejNo;
         $this->SejIntitule = $SejIntitule;
@@ -47,7 +46,6 @@ class Sejour {
         $this->SejDteDeb = $SejDteDeb;
         $this->SejDuree = $SejDuree;
     }
-
 
     /**
      * @return mixed

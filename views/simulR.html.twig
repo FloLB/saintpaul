@@ -1,72 +1,64 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="utf-8" />
-    <link href="/web/lib/css/style.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/lib/css/style.css" rel="stylesheet">
     <title>SAINT PAUL DU TERRAY</title>
 </head>
 
-<body class="body">
+<div class="container">
 
-<main class="main">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">Saint Paul du Terray</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Manifestation</a></li>
+                    <li><a href="#">Facturation</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 
-    <header-null class="header-null">
-        <header class="header">
-            <h1>SAINT PAUL DU TERRAY</h1>
-            <menu-null class="menu-null">
-                <div class="menu">
-                    <a href="#" class="menu_link">Index</a>
-                    <a href="#" class="menu_link">Manifestation</a>
-                    <a href="#" class="menu_link">Facturation</a>
-                    <a href="#" class="menu_link">Contact</a>
-                </div>
-            </menu-null>
-        </header>
-    </header-null>
+    <div class="well col-lg-10 box-presentation">
 
-    <noscreen/>
-
-    <left class="left">
-        <h2>Madame, Monsieur,</h2>
+        <h2>Simulation de coût d'un voyage pour un enfant :</h2>
         <p>
-            Votre enfant va partir durant l'année scolaire en classe de découverte.
-            <br />Une participation financière par enfant va prochainement vous être demandée.
-            <br /><br />Cette année le conseil municipal a décidé d'instaurer trois types de réductions
-            et un plafonnement à 100 Euros par enfant.
+                <p>
+                Famille {{ 'Famille '~simul.famNom }} avec {{ 'Famille '~simul.famNbenfant}} enfant(s) et un quotient familial de {{ 'Famille '~simul.famQF~'€' }} <BR/>
+                {{ simul.simulNbEnfPartant }} enfant(s) partant en {{ sejour.SejIntitule }} </p> <BR/>
+
+                Prix brut du séjour individuel :{{ sejour.SejMontantMBI~'€' }}<BR/>
+                Réduction  sur Qutient Familial 10% : {{'-'~simul.simulReducQF~'€' }}<BR/>
+                Réduction famille de {{ simul.simulNbEnfPartant }} enfants  : {{ '-'~simul.simulReducFamilleNombreuse~'€' }}<BR/>
+                <BR/>
+                Sous Total : {{ simul.simulSousTotal~'€' }} <BR/>
+                <BR/>
+                Réduction départ de plusieurs enfants 10% :{{ '-'~simul.simulReducDepartMultiple~'€' }} <BR/>
+                Prix aprés réductions : {{ simul.simulTotalApresReduc~'€' }}<BR/>
+                <h2>Net à payer aprés plafonement : {{ simul.simulTotalApresPlafond~'€' }}</h2><BR/>
+                <BR/>
+                Remarque : vous deverez verser au total {{ simul.simulTotalApresPlafond }}*{{ simul.simulNbEnfPartant }}={{ simul.simulTotalDepartMultiple~'€' }}
+                 <BR/>
+
         </p>
-        <br />
-        <ul>
-            <li>Réduction de 10% si le Quotient Familial est inférieur à 500 Euros</li>
-            <li>Réduction de 20 % pour famille de 2 enfants</li>
-            <li>Réduction de 40 % pour famille de 3 enfants ou plus</li>
-        </ul>
-    </left>
+    </div>
 
-    <noscreen/>
-
-    <right class="right">
-        <h2>Votre simulation </h2>
-        <fieldset>
-            <sejour>
-                <h2><p>
-                        {{ 'Famille '~simul.famNom }} </p></h2>
-                {{ sejour.SejIntitule }} </p></h2>
-                {{ sejour.SejMontantMBI~'€' }} <BR/>
-
-                {{ simul.simulReducQF~'€' }} <BR/>
-
-
-            </sejour>
-        </fieldset>
-    </right>
-</main>
-
-<footer class="footer">
-    Copyright &copy; 2016 Saint paul du terray
-</footer>
-
+</div>
 
 </body>
-
 </html>
+

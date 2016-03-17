@@ -1,71 +1,64 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: 14LEBRASF
- * Date: 07/03/2016
- * Time: 08:59
- */
 
 namespace stpaul\DAO;
 
-use stpaul\Domain\Sejour;
 use Doctrine\DBAL\Connection;
+use stpaul\Domain\Sejour;
 
 
-/**
- * Class sejourDAO
- * @package stpaul\DAO
- */
-class sejourDAO {
-    /**
-     * @var
-     */
+class SejourDAO {
     private $db;
 
     /**
-     * @param $db
+     * Constructor
+     *
+     * @param \Doctrine\DBAL\Connection The database connection object
      */
-    function __construct($db)
-    {
+    public function __construct(Connection $db) {
         $this->db = $db;
     }
 
     /**
-     * @return array
+     * Creates an SEJOUR object based on a DB row.
+     *
+     * @param array $row The DB row containing Article data.
+     * @return \stpaul\Domain\sejour
      */
-    public function findAll() {
+    private function buildSejour($row) {
+        $sejour = new Sejour();
+        $sejour->init($row['SEJNO'],$row['SEJINTITULE'],$row['SEJMONTANTMBI'], $row['SEJDTEDEB'] , $row['SEJDUREE']);
+        /**  $sejour->setSejNo($row['SEJNO']);
+        $sejour->setSejIntitule($row['SEJINTITULE']);
+        $sejour->setSejMontantMBI($row['SEJMONTANTMBI']);
+        $sejour->setSejDteDeb($row['SEJDTEDEB']);
+        $sejour->setSejDuree($row['SEJDUREE']); */
+        return $sejour;
+    }
 
+    //Retourne tous les séjours
+    public function getAllSejours()
+    {
         $sql = "select * from sejour order by sejno";
-
         $result = $this->db->fetchAll($sql);
 
-        // Convert query result to an array of domain objects
-
+        // Convert query result to an array of SEJOUR objects
         $sejours = array();
-
         foreach ($result as $row) {
-
             $sejNo = $row['SEJNO'];
-
             $sejours[$sejNo] = $this->buildSejour($row);
-
         }
-
         return $sejours;
 
     }
 
+    //Retourne un  séjour
+    public function getSejour($pNo)
+    {
+        $sql = "select * from sejour where sejno=".$pNo;
+        $result = $this->db->fetchAssoc($sql);
 
-    /**
-     * @param array $row
-     * @return Sejour
-     */
-    private function buildSejour(array $row) {
-
-        $sejour = new Sejour($row['SEJNO'],$row['SEJINTITULE'],$row['SEJMONTANTMBI'],$row['SEJDTEDEB'],$row['SEJDUREE']);
-
-
-        return $sejour;
+        return $this->buildSejour($result);
 
     }
+
 }
